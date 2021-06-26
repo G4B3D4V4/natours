@@ -6,6 +6,7 @@ const helmet = require('helmet');
 const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 const cookieParser = require('cookie-parser');
+const compression = require('compression')
 
 const tourRouter = require('./routers/tourRouters');
 const userRouter = require('./routers/userRouters');
@@ -52,7 +53,7 @@ if (process.env.NODE_ENV === 'development') {
     app.use(morgan('dev'));
 }
 
-
+app.use(compression())
 
 app.use((req, res, next) =>{
     req.requestTime = new Date().toISOString();
