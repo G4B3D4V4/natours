@@ -16,6 +16,7 @@ const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
 
 
+// Starting express app
 const app = express();
 
 app.set('view engine', 'pug');
