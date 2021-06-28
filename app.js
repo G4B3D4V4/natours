@@ -7,7 +7,8 @@ const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 const cookieParser = require('cookie-parser');
 const compression = require('compression');
-const cors = require('cors')
+const cors = require('cors');
+const csp = require('content-security-policy');
 
 const tourRouter = require('./routers/tourRouters');
 const userRouter = require('./routers/userRouters');
@@ -29,6 +30,9 @@ app.set('views', path.join(__dirname, 'views'));
 // Imprelement cors
 app.use(cors());
 app.options('*', cors());
+
+// Implement Content Security police
+app.use(csp.getCSP(csp.STARTER_OPTIONS))
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(helmet());

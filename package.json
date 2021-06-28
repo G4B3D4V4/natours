@@ -18,6 +18,7 @@
     "bcrypt": "^5.0.1",
     "bcryptjs": "^2.4.3",
     "compression": "^1.7.4",
+    "content-security-policy": "^0.3.4",
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
     "cross-env": "^7.0.3",
