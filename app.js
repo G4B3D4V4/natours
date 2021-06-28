@@ -6,7 +6,8 @@ const helmet = require('helmet');
 const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 const cookieParser = require('cookie-parser');
-const compression = require('compression')
+const compression = require('compression');
+const cors = require('cors')
 
 const tourRouter = require('./routers/tourRouters');
 const userRouter = require('./routers/userRouters');
@@ -25,6 +26,9 @@ app.enable('trust proxy')
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
 
+// Imprelement cors
+app.use(cors());
+app.options('*', cors());
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(helmet());
