@@ -15,6 +15,7 @@ const userRouter = require('./routers/userRouters');
 const reviewRouter = require('./routers/reviewRouter');
 const viewsRouter = require('./routers/viewsRouters');
 const bookingRouter = require('./routers/bookingRouter')
+const bookingController = require('./controllers/bookingController');
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
 
@@ -36,6 +37,8 @@ app.use(csp.getCSP(csp.STARTER_OPTIONS))
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(helmet());
+
+app.post('/webhook-checkout', express.raw({type: 'application/json'}), bookingController.webhookCheckout);
 
 app.use(express.json({limit: '10kb'}));
 app.use(cookieParser());
